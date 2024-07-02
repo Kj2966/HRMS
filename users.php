@@ -154,7 +154,7 @@
 										<tr>
 											<td>
 												<h2 class="table-avatar">
-													<a href="profile.php" class="avatar"><img src="profiles/<?php echo htmlentities($result->Picture);?>" alt="Profile Pic"></a>
+													<a href="profile.php" class="avatar"><img src="assets/img/profiles/<?php echo htmlentities($result->Picture);?>" alt="Profile Pic"></a>
 													<a href="profile.php"><?php echo htmlentities($result->FirstName).$result->LastName;?>
 													<span><?php echo htmlentities($result->UserName);?></span></a>
 												</h2>

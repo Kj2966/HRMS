@@ -8,7 +8,7 @@
 								</button>
 							</div>
 							<div class="modal-body">
-								<form method="POST" enctype="multipart/form-data">
+								<form method="POST" enctype="multipart/form-data" action="controller/add_user.php">
 									<div class="row">
 										<div class="col-sm-6">
 											<div class="form-group">
@@ -68,7 +68,7 @@
 									
 									
 									<div class="submit-section">
-										<button type="submit" name="add_user" class="btn btn-primary submit-btn">Submit</button>
+										<button type="submit" name="add_user" value="add_user_db" class="btn btn-primary submit-btn">Submit</button>
 									</div>
 								</form>
 							</div>

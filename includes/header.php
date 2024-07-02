@@ -2,7 +2,7 @@
 	<!-- Logo -->
 	<div class="header-left">
 		<a href="index.php" class="logo">
-			<img src="assets/img/logo.png" width="40" height="40" alt="">
+			<img src="assets/img/tsLogo.png" width="130" height="70" alt="">
 		</a>
 	</div>
 	<!-- /Logo -->
@@ -17,7 +17,7 @@
 	
 	<!-- Header Title -->
 	<div class="page-title-box">
-		<h3>Dreamguy's Technologies</h3>
+		<h3>TeamSync HR </h3>
 	</div>
 	<!-- /Header Title -->
 	
@@ -235,16 +235,21 @@
 		<!-- /Message Notifications -->
 
 		<?php 
-		$sql = "SELECT * from users";
+		$user=$_SESSION['userlogin'];
+		$email=$_SESSION['useremail'];
+		$sql = "SELECT * from users where Email = '$email'";
 		$query = $dbh -> prepare($sql);
 		$query->execute();
 		$result=$query->fetch(PDO::FETCH_OBJ);
+		//var_dump($query);
 		$cnt=1;
+		// $pic= $result->Picture;
+		// var_dump($pic);
 		?>
 
 		<li class="nav-item dropdown has-arrow main-drop">
 			<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-				<span class="user-img"><img src="./profiles/<?php echo htmlentities($result->Picture);?>" alt="User Picture">
+				<span class="user-img"><img src="assets/img/profiles/<?php echo htmlentities($result->Picture);?>" alt="User Picture">
 				<span class="status online"></span></span>
 				<span><?php echo htmlentities(ucfirst($_SESSION['userlogin']));?></span>
 			</a>

@@ -10,6 +10,8 @@ define('DB_PORT','3307'); // Ensure this matches your MySQL server port
 try
 {
     $dbh = new PDO("mysql:host=".DB_HOST.";port=".DB_PORT.";dbname=".DB_NAME, DB_USER, DB_PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
+    $con = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME,DB_PORT);
+
 }
 catch (PDOException $e)
 {

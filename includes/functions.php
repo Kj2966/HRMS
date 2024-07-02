@@ -273,7 +273,7 @@
 
 		if(move_uploaded_file($file_loc,$folder.$final_file) && ($password == $confirm_password)){
 			$image=$final_file;
-			$password = password_hash($password,PASSWORD_DEFAULT);
+			$password = password_hash($password,PASSWORD_BCRYPT);
 		 }
 		$sql = "INSERT INTO `employees` (`id`, `FirstName`, `LastName`, `UserName`, `Email`, `Password`, `Employee_Id`, `Phone`, `Department`, `Designation`, `Picture`, `DateTime`) 
 		VALUES (NULL, :firstname, :lastname, :username, :email,:password, :id, :phone, :department, :designation,  :pic, current_timestamp())";
@@ -291,8 +291,15 @@
 		$query->execute();
 		$lastInsert = $dbh->lastInsertId();
 		if($lastInsert>0){
-			echo "<script>alert('Employee Has Been Added.');</script>";
-			echo "<script>window.location.href='employees.php';</script>";
+			echo "Last";
+			$filename='C:\xampp\htdocs\HRMS\emailHandeler\mailBodyEmployee.html';
+			include('C:\xampp\htdocs\HRMS\emailHandeler\mailConfigEmployee.php');
+			sendMail($filename,$email);
+			//echo $mailFun;
+			//echo "<script>alert('Employee Has Been Added.');</script>";
+			
+			//echo "<script>window.location.href='employees.php';</script>";
+
 		}else{
 			echo "<script>alert('Something Went Wrong');</script>";
 		}	

@@ -8,7 +8,7 @@
 		$_SESSION['userlogin'] = $_POST['username'];
 		$username = htmlspecialchars($_POST['username']);
 		$password = htmlspecialchars($_POST['password']);
-		$sql = "SELECT UserName,Password from users where UserName=:username";
+		$sql = "SELECT UserName,Password,email from users where UserName=:username";
 		$query = $dbh->prepare($sql);
 		$query->bindParam(':username',$username,PDO::PARAM_STR);
 		$query-> execute();
@@ -16,9 +16,11 @@
 		if($query->rowCount() > 0){
 			foreach ($results as $row) {
 				$hashpass=$row->Password;
+				$email = $row->email;
 			}//verifying Password
 			if (password_verify($password, $hashpass)) {
 				$_SESSION['userlogin']=$_POST['username'];
+				$_SESSION['useremail'] = $email;
 				echo "<script>window.location.href= 'index.php'; </script>";
 			}
 			else {
